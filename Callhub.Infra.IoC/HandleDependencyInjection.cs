@@ -25,6 +25,7 @@ namespace Callhub.Infra.IoC
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ICompanyService, CompanyService>();
             services.AddTransient<IDepartmentService, DepartmentService>();
+            services.AddTransient<IMailService, MailService>();
 
             services.AddTransient<ITokenService, TokenService>();
             services.AddTransient<IHashService, HashService>();

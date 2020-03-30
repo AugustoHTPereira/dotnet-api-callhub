@@ -32,7 +32,11 @@ namespace Callhub.Presentation.Backend
             // Handle auto mapper
             services.HandleAutoMapper();
 
+            // Set up the JWT settings
             services.HandleJWT(this.Configuration);
+
+            // Set up the mail settings
+            services.HandleMailService(this.Configuration);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
