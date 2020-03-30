@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Callhub.Presentation", "1 - Callhub.Presentation", "{32F200DF-9056-42AF-A318-9C455D177FA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.2 - Callhub.Presentation.Frontend", "1.2 - Callhub.Presentation.Frontend", "{D9196904-77C9-4F17-8CA2-BA642BE7FE27}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.1 - Callhub.Presentation.Backend", "1.1 - Callhub.Presentation.Backend", "{3CCF7782-1C9A-47C2-BE5D-BB3CDF7B5774}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.3 - Callhub.Presentation.Mobile", "1.3 - Callhub.Presentation.Mobile", "{4EFAD416-272E-493B-A6CE-CDBBAEB9A99F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Callhub.Application", "2 - Callhub.Application", "{9611ECA1-E681-4DB3-917E-A085037A8EFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Callhub.Domain", "3 - Callhub.Domain", "{5D2135EB-EC64-4FC8-90AB-71BBD6BAFD12}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Callhub.Infra", "4 - Callhub.Infra", "{B21D6B23-871F-4662-A7D3-5BED55C392D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Callhub.Infra.Data", "4.1 - Callhub.Infra.Data", "{B22A0BA8-D4F1-45BE-BF40-50BF15577A3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Callhub.Domain", "Callhub.Domain\Callhub.Domain.csproj", "{E3C5BC58-A0F5-4155-B35A-CF1A851369EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Callhub.Infra.Data", "Callhub.Infra.Data\Callhub.Infra.Data.csproj", "{FEF183FD-7648-4092-867D-AEE8CF32DFA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Callhub.Presentation.Backend", "Callhub.Presentation.Backend\Callhub.Presentation.Backend.csproj", "{55F752F8-6A60-4954-9DBC-E05688256C6C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - Callhub.Infra.IoC", "4.2 - Callhub.Infra.IoC", "{A632548F-49F8-4742-9D9F-5713F7C306BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Callhub.Infra.IoC", "Callhub.Infra.IoC\Callhub.Infra.IoC.csproj", "{0B3F165E-3542-4DD5-B90A-537970DFDB6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Callhub.Application", "Callhub.Application\Callhub.Application.csproj", "{72E3B81C-8624-44BF-9254-1AA0DD4EF78A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E3C5BC58-A0F5-4155-B35A-CF1A851369EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3C5BC58-A0F5-4155-B35A-CF1A851369EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3C5BC58-A0F5-4155-B35A-CF1A851369EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3C5BC58-A0F5-4155-B35A-CF1A851369EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEF183FD-7648-4092-867D-AEE8CF32DFA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEF183FD-7648-4092-867D-AEE8CF32DFA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEF183FD-7648-4092-867D-AEE8CF32DFA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEF183FD-7648-4092-867D-AEE8CF32DFA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55F752F8-6A60-4954-9DBC-E05688256C6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55F752F8-6A60-4954-9DBC-E05688256C6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55F752F8-6A60-4954-9DBC-E05688256C6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55F752F8-6A60-4954-9DBC-E05688256C6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B3F165E-3542-4DD5-B90A-537970DFDB6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B3F165E-3542-4DD5-B90A-537970DFDB6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B3F165E-3542-4DD5-B90A-537970DFDB6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B3F165E-3542-4DD5-B90A-537970DFDB6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72E3B81C-8624-44BF-9254-1AA0DD4EF78A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72E3B81C-8624-44BF-9254-1AA0DD4EF78A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72E3B81C-8624-44BF-9254-1AA0DD4EF78A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72E3B81C-8624-44BF-9254-1AA0DD4EF78A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D9196904-77C9-4F17-8CA2-BA642BE7FE27} = {32F200DF-9056-42AF-A318-9C455D177FA5}
+		{3CCF7782-1C9A-47C2-BE5D-BB3CDF7B5774} = {32F200DF-9056-42AF-A318-9C455D177FA5}
+		{4EFAD416-272E-493B-A6CE-CDBBAEB9A99F} = {32F200DF-9056-42AF-A318-9C455D177FA5}
+		{B22A0BA8-D4F1-45BE-BF40-50BF15577A3B} = {B21D6B23-871F-4662-A7D3-5BED55C392D5}
+		{E3C5BC58-A0F5-4155-B35A-CF1A851369EF} = {5D2135EB-EC64-4FC8-90AB-71BBD6BAFD12}
+		{FEF183FD-7648-4092-867D-AEE8CF32DFA7} = {B22A0BA8-D4F1-45BE-BF40-50BF15577A3B}
+		{55F752F8-6A60-4954-9DBC-E05688256C6C} = {3CCF7782-1C9A-47C2-BE5D-BB3CDF7B5774}
+		{A632548F-49F8-4742-9D9F-5713F7C306BD} = {B21D6B23-871F-4662-A7D3-5BED55C392D5}
+		{0B3F165E-3542-4DD5-B90A-537970DFDB6E} = {A632548F-49F8-4742-9D9F-5713F7C306BD}
+		{72E3B81C-8624-44BF-9254-1AA0DD4EF78A} = {9611ECA1-E681-4DB3-917E-A085037A8EFF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4BF5DD39-9B2E-4182-9011-1461AA235ECC}
+	EndGlobalSection
+EndGlobal
