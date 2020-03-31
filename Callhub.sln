@@ -19,17 +19,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Callhub.Infra", "4 - Ca
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Callhub.Infra.Data", "4.1 - Callhub.Infra.Data", "{B22A0BA8-D4F1-45BE-BF40-50BF15577A3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Callhub.Domain", "Callhub.Domain\Callhub.Domain.csproj", "{E3C5BC58-A0F5-4155-B35A-CF1A851369EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Callhub.Domain", "Callhub.Domain\Callhub.Domain.csproj", "{E3C5BC58-A0F5-4155-B35A-CF1A851369EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Callhub.Infra.Data", "Callhub.Infra.Data\Callhub.Infra.Data.csproj", "{FEF183FD-7648-4092-867D-AEE8CF32DFA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Callhub.Infra.Data", "Callhub.Infra.Data\Callhub.Infra.Data.csproj", "{FEF183FD-7648-4092-867D-AEE8CF32DFA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Callhub.Presentation.Backend", "Callhub.Presentation.Backend\Callhub.Presentation.Backend.csproj", "{55F752F8-6A60-4954-9DBC-E05688256C6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Callhub.Presentation.Backend", "Callhub.Presentation.Backend\Callhub.Presentation.Backend.csproj", "{55F752F8-6A60-4954-9DBC-E05688256C6C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - Callhub.Infra.IoC", "4.2 - Callhub.Infra.IoC", "{A632548F-49F8-4742-9D9F-5713F7C306BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Callhub.Infra.IoC", "Callhub.Infra.IoC\Callhub.Infra.IoC.csproj", "{0B3F165E-3542-4DD5-B90A-537970DFDB6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Callhub.Infra.IoC", "Callhub.Infra.IoC\Callhub.Infra.IoC.csproj", "{0B3F165E-3542-4DD5-B90A-537970DFDB6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Callhub.Application", "Callhub.Application\Callhub.Application.csproj", "{72E3B81C-8624-44BF-9254-1AA0DD4EF78A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Callhub.Application", "Callhub.Application\Callhub.Application.csproj", "{72E3B81C-8624-44BF-9254-1AA0DD4EF78A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
