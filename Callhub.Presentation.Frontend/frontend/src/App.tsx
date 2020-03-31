@@ -1,11 +1,15 @@
-import React from 'react';
+import React from "react";
+import Routes from "./routes";
 
-function App() {
+import { ThemeProvider } from "styled-components";
+import GlobalStyle from "./Styles/global";
+import Light from "./Styles/Themes/Light";
+
+export default function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <ThemeProvider theme={Light}>
+      <GlobalStyle />
+      <Routes />
+    </ThemeProvider>
   );
 }
-
-export default App;
