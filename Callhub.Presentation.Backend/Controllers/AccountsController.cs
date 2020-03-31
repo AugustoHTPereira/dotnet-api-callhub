@@ -43,6 +43,17 @@ namespace Callhub.Presentation.Backend.Controllers
             }
         }
 
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody]LoginViewModel loginViewModel)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            UserViewModel userViewModel = await this._userService.SelectByCredentialsAsync(loginViewModel.Email, loginViewModel.Password);
+            if (userViewModel == null) return Unauthorized();
+
+            return Ok(this._tokenService.Generate(userViewModel));
+        }
+
         [HttpGet]
         [Authorize]
         public IActionResult Get()

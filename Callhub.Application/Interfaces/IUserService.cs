@@ -12,6 +12,7 @@ namespace Callhub.Application.Interfaces
         Task<UserViewModel> CreateAsync(RegisterViewModel Data);
         Task UpdateAsync(UserViewModel Data);
         Task<UserViewModel> SelectAsync(Guid Id);
+        Task<UserViewModel> SelectByCredentialsAsync(string Email, string Password);
 
     }
 }

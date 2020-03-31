@@ -22,21 +22,6 @@ namespace Callhub.Presentation.Backend.Controllers
 
         private readonly IUserService _userService;
 
-        [HttpGet("")]
-        public async Task<IActionResult> Get()
-        {
-            try
-            {
-                IEnumerable<UserViewModel> users = await this._userService.SelectAsync();
-
-                return Ok(users);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
-        }
-
         [HttpPost("department/{DepartmentId}")]
         public async Task<IActionResult> UpdateDepartment([FromRoute]string DepartmentId, [FromServices]IDepartmentService departmentService)
         {

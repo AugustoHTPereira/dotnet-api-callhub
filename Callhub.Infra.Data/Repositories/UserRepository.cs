@@ -55,5 +55,10 @@ namespace Callhub.Infra.Data.Repositories
         {
             await this._connection.ExecuteAsync($"UPDATE Users SET Name = @Name, Surname = @Surname, DepartmentId = @DepartmentId WHERE Id = @Id", Model);
         }
+
+        public async Task<User> SelectByCredentialsAsync(string Email, string PasswordHash)
+        {
+            return await this._connection.QueryFirstOrDefaultAsync<User>(@"SELECT * FROM Users WHERE Email = @Email AND Password = @PasswordHash", new { Email, PasswordHash });
+        }
     }
 }

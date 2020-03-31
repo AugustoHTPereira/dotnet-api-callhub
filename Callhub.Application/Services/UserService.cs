@@ -52,5 +52,10 @@ namespace Callhub.Application.Services
         {
             return this._mapper.Map<UserViewModel>(await this._userRepository.SelectAsync(Id));
         }
+
+        public async Task<UserViewModel> SelectByCredentialsAsync(string Email, string Password)
+        {
+            return this._mapper.Map<UserViewModel>(await this._userRepository.SelectByCredentialsAsync(Email, this._hashService.Encode(Password)));
+        }
     }
 }
