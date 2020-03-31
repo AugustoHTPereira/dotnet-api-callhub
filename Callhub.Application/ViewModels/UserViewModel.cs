@@ -11,5 +11,7 @@ namespace Callhub.Application.ViewModels
         public string Surname { get; set; }
         public string Email { get; set; }
         public DateTime CreatedAt { get; set; }
+
+        public virtual DepartmentViewModel Department { get; set; }
     }
 }

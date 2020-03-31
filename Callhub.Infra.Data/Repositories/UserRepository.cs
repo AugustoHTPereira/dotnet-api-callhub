@@ -41,9 +41,9 @@ namespace Callhub.Infra.Data.Repositories
             return await this._connection.QueryAsync<User>("SELECT * FROM Users");
         }
 
-        public Task<User> SelectAsync(Guid Id)
+        public async Task<User> SelectAsync(Guid Id)
         {
-            throw new NotImplementedException();
+            return await this._connection.QueryFirstOrDefaultAsync<User>(@"SELECT * FROM Users WHERE Id = @Id", new { Id });
         }
 
         public async Task<User> SelectIdentityAsync()
@@ -51,9 +51,9 @@ namespace Callhub.Infra.Data.Repositories
             return await this._connection.QueryFirstOrDefaultAsync<User>("SELECT * FROM Users ORDER BY CreatedAt DESC");
         }
 
-        public Task UpdateAsync(User Model)
+        public async Task UpdateAsync(User Model)
         {
-            throw new NotImplementedException();
+            await this._connection.ExecuteAsync($"UPDATE Users SET Name = @Name, Surname = @Surname, DepartmentId = @DepartmentId WHERE Id = @Id", Model);
         }
     }
 }

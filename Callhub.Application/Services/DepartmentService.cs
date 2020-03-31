@@ -24,5 +24,15 @@ namespace Callhub.Application.Services
         {
             return this._mapper.Map<IEnumerable<DepartmentViewModel>>(await this._departmentRepository.SelectAllByCompanyAsync(CompanyId));
         }
+
+        public async Task<DepartmentViewModel> Select(Guid Id)
+        {
+            return this._mapper.Map<DepartmentViewModel>(await this._departmentRepository.SelectAsync(Id));
+        }
+
+        public Task<IEnumerable<DepartmentViewModel>> Select()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

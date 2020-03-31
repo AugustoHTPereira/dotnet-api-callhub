@@ -10,5 +10,8 @@ namespace Callhub.Application.Interfaces
     {
         Task<IEnumerable<UserViewModel>> SelectAsync();
         Task<UserViewModel> CreateAsync(RegisterViewModel Data);
+        Task UpdateAsync(UserViewModel Data);
+        Task<UserViewModel> SelectAsync(Guid Id);
+
     }
 }

@@ -50,3 +50,9 @@ INSERT INTO Departments (
 ) VALUES (
   'Vendas', (SELECT TOP 1 Id FROM Companies ORDER BY CreatedAt DESC)
 );
+
+INSERT INTO Departments (
+  Name, CompanyId
+) VALUES (
+  'Faturamento', (SELECT TOP 1 Id FROM Companies ORDER BY CreatedAt DESC)
+);

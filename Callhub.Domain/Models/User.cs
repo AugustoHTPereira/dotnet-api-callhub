@@ -14,5 +14,8 @@ namespace Callhub.Domain.Models
         public Priority Priority { get; set; }
         public string Password { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public Guid DepartmentId { get; set; }
+
+        public virtual Department Department { get; set; }
     }
 }

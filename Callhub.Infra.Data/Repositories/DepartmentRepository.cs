@@ -29,9 +29,9 @@ namespace Callhub.Infra.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<Department> SelectAsync(Guid Id)
+        public async Task<Department> SelectAsync(Guid Id)
         {
-            throw new NotImplementedException();
+            return await this._connection.QueryFirstAsync<Department>("SELECT * FROM Departments WHERE Id = @Id", new { Id = Id });
         }
 
         public async Task<IEnumerable<Department>> SelectAsync()

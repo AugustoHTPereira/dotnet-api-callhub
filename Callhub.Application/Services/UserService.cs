@@ -38,5 +38,19 @@ namespace Callhub.Application.Services
             await this._mailService.SendMessageAsync("Welcome to Callhub " + Data.Name + "!", Data.Email);
             return this._mapper.Map<UserViewModel>(await this._userRepository.SelectIdentityAsync());
         }
+
+        public async Task UpdateAsync(UserViewModel Data)
+        {
+            User user = this._mapper.Map<User>(Data);
+            await this._userRepository.UpdateAsync(user);
+
+            this._mailService.SetSubject("Data updated.");
+            await this._mailService.SendMessageAsync("Successfully data updated!", Data.Email);
+        }
+
+        public async Task<UserViewModel> SelectAsync(Guid Id)
+        {
+            return this._mapper.Map<UserViewModel>(await this._userRepository.SelectAsync(Id));
+        }
     }
 }
