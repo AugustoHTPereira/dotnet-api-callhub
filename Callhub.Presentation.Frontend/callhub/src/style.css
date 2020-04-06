@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #eaf1f7;
+  font-family: sans-serif;
+  font-family: "Baloo Thambi 2", cursive;
+  font-size: 16px;
+  color: #434343;
+}
+
+a {
+  color: #2274A5;
+  text-decoration: none;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea {
+  border: 0;
+  border-bottom: 2px solid #ccc;
+  background-color: transparent;
+  padding: 0 12px;
+  min-height: 45px;
+  font-size: 16px;
+  color: #434343;
+  transition: 200ms;
+  outline: none;
+  border-radius: 4px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+  border-bottom-color: #2274A5;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+input[type="number"]::placeholder,
+textarea::placeholder {
+  color: #AAA;
+}
+
+button,
+input[type=submit],
+input[type=button] {
+  border-radius: 4px;
+  background-color: #CCC;
+  border: 0;
+  padding: 0 22px;
+  min-height: 45px;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #434343;
+}

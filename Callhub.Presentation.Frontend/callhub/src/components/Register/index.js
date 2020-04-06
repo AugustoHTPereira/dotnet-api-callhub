@@ -3,6 +3,7 @@ import api from "../../services/Api";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as UserActions from "../../store/actions/User";
+import "./style.css";
 
 class Register extends Component {
   constructor(props) {
@@ -48,8 +49,7 @@ class Register extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Registro</h1>
+      <div className="RegisterComponentContent">
         <form onSubmit={this.handleSubmit}>
           <input
             onChange={(e) =>
@@ -89,8 +89,6 @@ class Register extends Component {
 
           <input type="submit" value="Próximo" />
         </form>
-
-        <code>{JSON.stringify(this.state)}</code>
       </div>
     );
   }
