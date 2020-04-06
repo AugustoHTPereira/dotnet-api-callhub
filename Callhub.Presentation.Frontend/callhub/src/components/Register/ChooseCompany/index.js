@@ -1,33 +1,65 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as CompanyActions from "../../../store/actions/Company";
 import { bindActionCreators } from "redux";
+import * as UserActions from "../../../store/actions/User";
+import api from "../../../services/Api";
 
-const ChooseCompany = ({ companies, chooseCompany }) => {
-  return (
-    <div>
-      <h1>Choose a company</h1>
+class ChooseCompany extends Component {
+  constructor(props) {
+    super(props);
 
-      <ul>
-        {companies.map(company => (
-          <li key={company.id}>
-            {company.name}
-            <button onClick={() => chooseCompany(company)}>
-              Select
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+    this.state = {
+      companies: [],
+      selectedCompany: {},
+    };
+  }
 
-const mapStateToProps = state => ({
-  companies: state.company.list
+  async componentDidMount() {
+    try {
+      const response = await api.get("/companies");
+      console.log(response.data);
+      this.setState({ ...this.state, companies: response.data });
+      console.log(this.state);
+      console.log("props", this.props)
+    } catch (error) {
+      console.error("ERRO NA COMUNICAÇÃO COM O SERVIDOR", error);
+    }
+  }
+
+  async selectCompany(event, company) {
+    event.preventDefault();
+    await this.setState({ ...this.state, selectedCompany: company });
+    console.log("state", this.state);
+
+    this.props.setUserCompany(company);
+    this.props.next("DEPARTMENT");
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Choose company</h1>
+        <ul>
+          {this.state.companies.map((company) => (
+            <li
+              onClick={(event) => this.selectCompany(event, company)}
+              key={company.id}
+            >
+              {company.name}
+            </li>
+          ))}
+        </ul>
+        Company: {JSON.stringify(this.props.company)}
+      </div>
+    );
+  }
+}
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(UserActions, dispatch);
+
+const mapStateToProps = (state) => ({
+  company: state.user,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(CompanyActions, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(
-  ChooseCompany
-);
+export default connect(mapStateToProps, mapDispatchToProps)(ChooseCompany);

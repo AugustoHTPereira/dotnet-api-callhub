@@ -1,31 +1,72 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
+import api from "../../../services/Api";
 
+class ChooseDepartment extends Component {
+  constructor(props) {
+    super(props);
 
-const ChooseDepartment = ({ company }) => {
-  const ShowDepartments = () => {
-    if (company.departments) {
-      return company.departments.map(department => (
-        <li key={department.id}>{department.name}</li>
-      ));
+    this.state = {
+      departments: [],
+      selectedDepartment: {},
+      company: this.props.company,
+    };
+  }
+
+  async componentDidMount() {
+    try {
+      const response = await api.get(
+        `companies/${this.state.company.id}/departments`
+      );
+      this.setState({ ...this.state, departments: response.data });
+      console.log(this.state);
+    } catch (error) {
+      console.error("Error while gettin departments", error.message);
     }
+  }
 
-    return null;
-  };
+  async selectDepartment(event, departmentId) {
+    if (
+      !window.confirm(
+        "Tem certeza de que deseja pedir entrada em " + departmentId + "?"
+      )
+    )
+      return;
 
-  return (
-    <div>
-      <h1>
-        Choose a department in company <strong>{company.name}</strong>
-      </h1>
+    const response = await api.post(`users/department/${departmentId}`, {}, {
+      headers: {
+        Authorization: `Bearer ${this.props.accessToken}`
+      }
+    });
+    console.log(response);
+  }
 
-      <ul>
-        <ShowDepartments />
-      </ul>
-    </div>
-  );
-};
+  render() {
+    return (
+      <div>
+        <h1>Choose a department for {this.state.company.name}</h1>
+        {this.state.departments.length > 0 ? (
+          <ul>
+            {this.state.departments.map((department, index) => (
+              <li
+                onClick={(event) => this.selectDepartment(event, department.id)}
+                key={index}
+              >
+                {department.name}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <h1>No department found</h1>
+        )}
+      </div>
+    );
+  }
+}
 
-export default connect(state => ({ company: state.company.selected }))(
-  ChooseDepartment
-);
+const mapStateToProps = (state) => ({
+  company: state.user.company,
+  accessToken: state.user.token.accessToken,
+});
+
+export default connect(mapStateToProps)(ChooseDepartment);
