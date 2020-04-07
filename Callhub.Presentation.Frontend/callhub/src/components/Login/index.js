@@ -7,8 +7,7 @@ import { bindActionCreators } from "redux";
 
 import "./style.css";
 
-const Login = ({ setUser }) => {
-
+const Login = ({ setUser, setStage, setMail }) => {
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
 
@@ -21,17 +20,13 @@ const Login = ({ setUser }) => {
       <form className="CardBody">
         <input
           value={email}
-          onChange={(e) =>
-            setEmail(e.target.value)
-          }
+          onChange={(e) => setEmail(e.target.value)}
           type="email"
           placeholder="Digite seu e-mail"
         />
         <input
           value={password}
-          onChange={(e) =>
-            setPassword(e.target.value)
-          }
+          onChange={(e) => setPassword(e.target.value)}
           type="password"
           placeholder="Digite sua senha"
         />
@@ -40,9 +35,17 @@ const Login = ({ setUser }) => {
       </form>
 
       <div className="CardFooter">
-        <Link to="/forgot-password" title="Recuperar acesso">
+        <a
+          href="javascript:void(0)"
+          onClick={(e) => {
+            e.preventDefault();
+            setMail(email);
+            setStage("FORGOTPASSWORD");
+          }}
+          title="Recuperar acesso"
+        >
           Esqueci minha senha
-        </Link>
+        </a>
 
         <span className="Pipe"></span>
 

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import api from "../../services/Api";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -89,6 +90,14 @@ class Register extends Component {
 
           <input type="submit" value="Próximo" />
         </form>
+
+        <div
+          style={{ marginTop: 25, display: "flex", justifyContent: "center" }}
+        >
+          <Link to="/login" title="Acessar o sistema">
+            Já tenho uma conta
+          </Link>
+        </div>
       </div>
     );
   }

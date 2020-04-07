@@ -25,6 +25,7 @@
 
 .LoginContent .Card .CardBody {
   margin: 15px 25px 25px;
+  animation: fadeInRight 200ms ease-in-out;
 }
 
 .LoginContent .Card .CardBody input {
@@ -46,7 +47,6 @@
 .LoginContent .Card .CardBody input[type="submit"]:hover {
   border-radius: 100px;
   filter: brightness(90%);
-
 }
 
 .LoginContent .Card .CardFooter {
@@ -57,6 +57,6 @@
 
 .LoginContent .Card .CardFooter .Pipe {
   display: block;
-  background-color: #CCC;
+  background-color: #ccc;
   width: 1px;
 }
