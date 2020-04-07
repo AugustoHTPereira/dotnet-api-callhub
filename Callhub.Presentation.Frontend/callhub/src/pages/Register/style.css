@@ -70,3 +70,9 @@
   border-radius: 100px;
   filter: brightness(90%);
 }
+
+@media (max-width: 600px) {
+  .RegisterContent .Centered {
+    margin-top: 25px;
+  }
+}
