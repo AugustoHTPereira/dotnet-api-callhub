@@ -7,3 +7,8 @@ export const setUserToken = (token) => ({
   type: "SET_USERTOKEN",
   payload: token,
 });
+
+export const setUser = user => ({
+  type: "SET_USER",
+  payload: user
+})

@@ -64,3 +64,7 @@ input[type=button] {
   text-transform: uppercase;
   color: #434343;
 }
+
+input.invalid {
+  border-bottom-color: #A52222;
+}

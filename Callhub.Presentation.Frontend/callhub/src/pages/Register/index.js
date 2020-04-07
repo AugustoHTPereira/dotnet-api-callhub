@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ChooseCompany from "../../components/Register/ChooseCompany";
 import ChooseDepartment from "../../components/Register/ChooseDepartment";
 import RegisterComponent from "../../components/Register";
-import { Provider } from "react-redux";
-import store from "../../store";
 import "./style.css";
 
 const Register = () => {
@@ -25,11 +23,9 @@ const Register = () => {
             <h1>Registro</h1>
             <p>Cadastre-se agora mesmo!</p>
           </div>
-          <Provider store={store}>
-            <div className="CardBody">
-              <HandleStages />
-            </div>
-          </Provider>
+          <div className="CardBody">
+            <HandleStages />
+          </div>
         </div>
       </div>
     </div>
