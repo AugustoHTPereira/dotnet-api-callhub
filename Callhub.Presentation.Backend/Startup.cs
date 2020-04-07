@@ -61,7 +61,7 @@ namespace Callhub.Presentation.Backend
 
             app.UseAuthentication();
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
