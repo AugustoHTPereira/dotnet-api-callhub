@@ -8,7 +8,15 @@ export const setUserToken = (token) => ({
   payload: token,
 });
 
-export const setUser = user => ({
-  type: "SET_USER",
-  payload: user
-})
+export const setUser = (user) => {
+  console.log("ACTION", user);
+  return {
+    type: "SET_USER",
+    payload: user,
+  };
+};
+
+export const clearStorageUser = () => ({
+  type: "CLEAR_USER",
+  payload: {},
+});

@@ -1,22 +1,27 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import { connect } from "react-redux";
+import { App } from "./pages/App";
+import { NotFound } from "./pages/Http";
 
 const Routes = ({ token }) => {
   const isAuthenticated = () => {
-    console.log(token);
-    if (token !== null) return true;
+    try {
+      console.log("Token: ", token);
+      if (token) return true;
 
-    return false;
+      return false;
+    } catch (error) {
+      return false;
+    }
   };
 
   const PrivateRoute = ({ component: Component, ...rest }) => {
-    console.log("Private route", Component, rest);
-
-    if (!isAuthenticated()) return <Route component={Component} {...rest} />;
+    if (isAuthenticated()) return <Route component={Component} {...rest} />;
     else
       return (
         <Redirect
@@ -26,8 +31,6 @@ const Routes = ({ token }) => {
       );
   };
 
-  console.log("User token", token);
-
   return (
     <BrowserRouter>
       <Switch>
@@ -36,18 +39,16 @@ const Routes = ({ token }) => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/home" component={Home} />
 
-        <PrivateRoute
-          exact
-          path="/app"
-          component={() => <h1>Private route</h1>}
-        />
+        <PrivateRoute exact path="/app" component={App} />
+
+        <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
   );
 };
 
 const mapStateToProps = (state) => ({
-  token: state.user.token,
+  token: state.user.accessToken,
 });
 
 export default connect(mapStateToProps)(Routes);
