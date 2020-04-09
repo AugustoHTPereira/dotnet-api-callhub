@@ -7,6 +7,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import { App } from "./pages/App";
 import { NotFound } from "./pages/Http";
+import Calls from "./pages/Calls";
+import NewCall from "./pages/Calls/New";
 
 const Routes = ({ token }) => {
   const isAuthenticated = () => {
@@ -40,6 +42,8 @@ const Routes = ({ token }) => {
         <Route exact path="/home" component={Home} />
 
         <PrivateRoute exact path="/app" component={App} />
+        <PrivateRoute exact path="/calls" component={Calls} />
+        <PrivateRoute exact path="/calls/new" component={NewCall} />
 
         <Route component={NotFound} />
       </Switch>

@@ -1,25 +1,12 @@
-import React from 'react';
-
-// import { Container } from './styles';
+import React from "react";
+import "./style.css";
 
 const Header = () => (
-
-  <header className="ContentHeader">
-
-    <div className="CallhubIcon">
-
+  <header className="Navbar">
+    <div className="BrandCrumb">
+      <h1>Header</h1>
     </div>
-
-    <div className="SearchBar">
-
-    </div>
-
-    <div className="Actions">
-
-    </div>
-
   </header>
-
 );
 
 export default Header;

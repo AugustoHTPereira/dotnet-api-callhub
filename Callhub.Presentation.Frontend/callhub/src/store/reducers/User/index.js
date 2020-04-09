@@ -9,13 +9,14 @@ const INITIAL_STATE = {
   createdAt: null,
   company: null,
   stayLogged: false,
+  role: "ADMIN",
 };
 
 export default function user(state = INITIAL_STATE, action) {
   console.log("REDUCER", action);
   switch (action.type) {
     case "SET_USER":
-      return action.payload;
+      return { ...state, ...action.payload };
 
     case "SET_USERCOMPANY":
       return { ...state, company: action.payload };
