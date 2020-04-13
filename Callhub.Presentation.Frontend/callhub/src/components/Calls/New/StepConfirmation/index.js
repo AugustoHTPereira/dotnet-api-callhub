@@ -3,9 +3,19 @@ import { connect } from "react-redux";
 import Api from "../../../../services/Api";
 import FileList from "../../../Upload/FileList";
 import "./style.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
+import Loading from "../../../Loading";
 
 const StepConfirmation = ({ call, setStep, accessToken }) => {
+  const [isLoading, setLoading] = useState(false);
+  const [loadingText, setLoadingText] = useState("Carregando...");
+
   const handleConfirmation = async () => {
+    setLoading(true);
+    setLoadingText("Compactando formulário...");
+
     const data = {
       title: call.title,
       description: call.description,
@@ -14,22 +24,31 @@ const StepConfirmation = ({ call, setStep, accessToken }) => {
     };
 
     try {
+      setLoadingText("Enviando dados...");
       const response = await Api.post("/calls", data, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       });
 
-      console.warn("Api response", response);
-
-      window.location.href = "/calls";  
+      toast.success("Chamado criado com sucesso!", {
+        onClose: () => (window.location.href = "/calls"),
+      });
+      setLoadingText("Redirecionando você ao início...");
     } catch (error) {
       console.error(error.message);
+      toast.error("Erro ao criar o chamado.", {
+        autoClose: false,
+      });
+      setLoading(false);
+      setLoadingText("")
     }
   };
 
   return (
     <div className="ContentConfirmation">
+      {isLoading && <Loading text={loadingText} />}
+
       <h3 className="PageTitle">Confirmação</h3>
 
       <div>
@@ -53,7 +72,9 @@ const StepConfirmation = ({ call, setStep, accessToken }) => {
           Voltar
         </a>
 
-        <button onClick={handleConfirmation}>Confirmar</button>
+        <button disabled={isLoading} onClick={handleConfirmation}>
+          Confirmar
+        </button>
       </div>
     </div>
   );
