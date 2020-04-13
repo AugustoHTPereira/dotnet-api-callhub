@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Callhub.Infra.Data.Repositories
 {
-    public class CallCategoryRepository : IRepository<CallCategory>, ICallCategoryRespository
+    public class CategoryRepository : IRepository<Category>, ICategoryRespository
     {
-        public CallCategoryRepository(IConnection connection)
+        public CategoryRepository(IConnection connection)
         {
             this._connection = connection.Connect();
         }
@@ -23,27 +23,27 @@ namespace Callhub.Infra.Data.Repositories
             GC.SuppressFinalize(this);
         }
 
-        public Task InsertAsync(CallCategory Model)
+        public Task InsertAsync(Category Model)
         {
             throw new NotImplementedException();
         }
 
-        public Task<CallCategory> SelectAsync(Guid Id)
+        public Task<Category> SelectAsync(Guid Id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<CallCategory>> SelectAsync()
+        public Task<IEnumerable<Category>> SelectAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<CallCategory> SelectIdentityAsync()
+        public Task<Category> SelectIdentityAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(CallCategory Model)
+        public Task UpdateAsync(Category Model)
         {
             throw new NotImplementedException();
         }

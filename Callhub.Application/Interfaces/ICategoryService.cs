@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Callhub.Application.Interfaces
 {
-    interface ICallTypeService
+    public interface ICategoryService
     {
+
     }
 }

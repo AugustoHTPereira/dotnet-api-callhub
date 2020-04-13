@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Callhub.Application.Services
 {
-    public class CallTypeService : ICallTypeService
+    public class CategoryService : ICategoryService
     {
     }
 }

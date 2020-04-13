@@ -1,11 +1,9 @@
 ﻿using Callhub.Domain.Enums;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Callhub.Domain.Models
 {
-    public class CallType
+    public class Category
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Callhub.Domain.Interfaces.Repository
 {
-    public interface ICallTypeRepository : IRepository<CallType>
+    public interface ICategoryRespository : IRepository<Category>
     {
 
     }
