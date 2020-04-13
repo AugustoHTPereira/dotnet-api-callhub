@@ -7,6 +7,12 @@ const INITIAL_STATE = {
       lastMessage: "",
     },
   ],
+  newCall: {
+    title: "",
+    description: "",
+    priority: 1,
+    attachs: [],
+  },
 };
 
 export default function call(store = INITIAL_STATE, action) {
@@ -21,6 +27,33 @@ export default function call(store = INITIAL_STATE, action) {
       return {
         ...store,
         selectedCall: store.list.find((x) => x.id == action.payload),
+      };
+
+    case "SET_NEWCALL_DATA":
+      return {
+        ...store,
+        newCall: {
+          ...store.newCall,
+          ...action.payload,
+        },
+      };
+
+    case "SET_NEWCALL_PRIORITY":
+      return {
+        ...store,
+        newCall: {
+          ...store.newCall,
+          priority: action.payload,
+        },
+      };
+
+    case "SET_NEWCALL_ATTACHS":
+      return {
+        ...store,
+        newCall: {
+          ...store.newCall,
+          attachs: [...store.newCall.attachs, ...action.payload],
+        },
       };
 
     default:

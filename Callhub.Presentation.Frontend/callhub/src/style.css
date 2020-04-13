@@ -12,6 +12,8 @@ body {
   font-family: "Baloo Thambi 2", cursive;
   font-size: 16px;
   color: #434343;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -102,4 +104,9 @@ input.invalid {
   min-height: 150px;
 
   display: flex;
+}
+
+.PageTitle {
+  color: #777;
+  font-weight: 600;
 }
