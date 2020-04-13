@@ -1,12 +1,4 @@
 .LoadingContent {
-  background-color: #43434344;
-  position: absolute;
-  overflow: hidden;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  top: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,6 +10,7 @@
 .LoadingContent h1 {
   font-weight: 200;
   margin-top: 25px;
+  font-size: 22px;
 }
 
 .LoadingContent p {

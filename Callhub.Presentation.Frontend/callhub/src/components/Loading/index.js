@@ -14,8 +14,14 @@ const Loading = ({ text = "Carregando..." }) => (
       <div></div>
     </div>
 
-    <h1>Aguarde</h1>
-    <p>{text}</p>
+    {() =>
+      text ? (
+        <>
+          <h1>Aguarde</h1>
+          <p>{text}</p>
+        </>
+      ) : null
+    }
   </div>
 );
 

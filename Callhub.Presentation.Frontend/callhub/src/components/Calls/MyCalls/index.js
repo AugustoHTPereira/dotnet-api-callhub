@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import Api from "../../../services/Api";
 import { connect } from "react-redux";
+import Loading from "../../Loading";
 
 class MyCalls extends Component {
   constructor(props) {
@@ -9,6 +9,7 @@ class MyCalls extends Component {
 
     this.state = {
       calls: [],
+      isLoading: true,
     };
   }
 
@@ -19,34 +20,45 @@ class MyCalls extends Component {
       },
     });
 
-    this.setState({ ...this.state, calls: response.data });
+    this.setState({ ...this.state, calls: response.data, isLoading: false });
   }
 
   render() {
-    return (
-      <ul className="CallList">
-        {this.state.calls.map((call, index) => (
-          <li
-            key={index}
-            onClick={() => {
-              console.log(call);
-              window.location.href = `calls/${call.id}`;
-            }}
-            className="Call"
-          >
-            <div className="CallData">
-              <div className="Situation">
-                <span title="Finalizado" className="Badge Success"></span>
+    if (!this.state.isLoading)
+      return (
+        <ul className="CallList">
+          {this.state.calls.map((call, index) => (
+            <li
+              key={index}
+              onClick={() => {
+                console.log(call);
+                window.location.href = `calls/${call.id}`;
+              }}
+              className="Call"
+            >
+              <div className="CallData">
+                <div className="Situation">
+                  <span title="Finalizado" className="Badge Success"></span>
+                </div>
+                <div className="Details">
+                  <h2 className="Title">{call.title}</h2>
+                  <p className="Description">{call.description}</p>
+                </div>
               </div>
-              <div className="Details">
-                <h2 className="Title">{call.title}</h2>
-                <p className="Description">{call.description}</p>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
-    );
+            </li>
+          ))}
+        </ul>
+      );
+    else
+      return (
+        <div
+          style={{
+            marginTop: "55px"
+          }}
+        >
+          <Loading text="" />
+        </div>
+      );
   }
 }
 
