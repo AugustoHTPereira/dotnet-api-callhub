@@ -7,21 +7,24 @@ using System.Text;
 
 namespace Callhub.Infra.IoC
 {
-    public class HandleAutoMapper : Profile
+  public class HandleAutoMapper : Profile
+  {
+    public HandleAutoMapper()
     {
-        public HandleAutoMapper()
-        {
-            CreateMap<UserViewModel, User>();
-            CreateMap<User, UserViewModel>();
+      CreateMap<UserViewModel, User>();
+      CreateMap<User, UserViewModel>();
 
-            CreateMap<RegisterViewModel, User>();
-            CreateMap<User, RegisterViewModel>();
+      CreateMap<RegisterViewModel, User>();
+      CreateMap<User, RegisterViewModel>();
 
-            CreateMap<CompanyViewModel, Company>();
-            CreateMap<Company, CompanyViewModel>();
+      CreateMap<CompanyViewModel, Company>();
+      CreateMap<Company, CompanyViewModel>();
 
-            CreateMap<DepartmentViewModel, Department>();
-            CreateMap<Department, DepartmentViewModel>();
-        }
+      CreateMap<DepartmentViewModel, Department>();
+      CreateMap<Department, DepartmentViewModel>();
+
+      CreateMap<CallViewModel, Call>();
+      CreateMap<Call, CallViewModel>();
     }
+  }
 }

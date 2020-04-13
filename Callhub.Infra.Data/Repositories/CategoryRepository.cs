@@ -5,46 +5,45 @@ using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Callhub.Infra.Data.Repositories
 {
-  public class CompanyRepository : IRepository<Company>, ICompanyRepository
+  public class CategoryRepository : IRepository<Category>, ICategoryRespository
   {
-    public CompanyRepository(IConnection connection)
+    public CategoryRepository(IConnection connection)
     {
       this._connection = connection.Connect();
     }
 
-    private readonly IDbConnection _connection;
+    public readonly IDbConnection _connection;
 
     public void Dispose()
     {
       GC.SuppressFinalize(this);
     }
 
-    public Task InsertAsync(Company Model)
+    public Task InsertAsync(Category Model)
     {
       throw new NotImplementedException();
     }
 
-    public Task<Company> SelectAsync(Guid Id)
+    public async Task<Category> SelectAsync(Guid Id)
+    {
+      return await this._connection.QueryFirstOrDefaultAsync(@"SELECT TOP 1 * FROM CATEGORIES WHERE ID = @Id", new { Id });
+    }
+
+    public Task<IEnumerable<Category>> SelectAsync()
     {
       throw new NotImplementedException();
     }
 
-    public async Task<IEnumerable<Company>> SelectAsync()
-    {
-      return await this._connection.QueryAsync<Company>("SELECT * FROM Companies");
-    }
-
-    public Task<Company> SelectIdentityAsync()
+    public Task<Category> SelectIdentityAsync()
     {
       throw new NotImplementedException();
     }
 
-    public Task UpdateAsync(Company Model)
+    public Task UpdateAsync(Category Model)
     {
       throw new NotImplementedException();
     }

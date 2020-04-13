@@ -51,6 +51,7 @@ CREATE TABLE Calls (
   CategoryId UNIQUEIDENTIFIER NOT NULL FOREIGN KEY REFERENCES Categories(Id),
   Situation INT NOT NULL DEFAULT 0,
   CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
+  SectorDestinId UNIQUEIDENTIFIER NOT NULL FOREIGN KEY REFERENCES Sectors(Id),
   Note INT NULL,
   NoteObservation VARCHAR(255) NULL
 );
@@ -90,4 +91,10 @@ INSERT INTO Departments (
   Name, CompanyId
 ) VALUES (
   'Faturamento', (SELECT TOP 1 Id FROM Companies ORDER BY CreatedAt DESC)
+);
+
+INSERT INTO Sectors (
+  Name, CompanyId
+) VALUES (
+  'Manutenção', (SELECT TOP 1 Id FROM Companies ORDER BY CreatedAt DESC)
 );

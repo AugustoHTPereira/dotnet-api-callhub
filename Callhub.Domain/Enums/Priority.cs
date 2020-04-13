@@ -9,8 +9,7 @@ namespace Callhub.Domain.Enums
 
         Low,
         Medium,
-        High,
-        VeryHigh
+        High
 
     }
 }
