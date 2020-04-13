@@ -6,7 +6,6 @@ import "./style.css";
 
 const StepConfirmation = ({ call, setStep, accessToken }) => {
   const handleConfirmation = async () => {
-
     const data = {
       title: call.title,
       description: call.description,
@@ -14,16 +13,16 @@ const StepConfirmation = ({ call, setStep, accessToken }) => {
       sectorDestinId: "30f6593e-ed42-4a4d-8588-b74bfaa61a62",
     };
 
-    console.log("Upping request with data", data);
-
     try {
       const response = await Api.post("/calls", data, {
         headers: {
-          Authorization: `Bearer ${accessToken}`
-        }
+          Authorization: `Bearer ${accessToken}`,
+        },
       });
 
       console.warn("Api response", response);
+
+      window.location.href = "/calls";  
     } catch (error) {
       console.error(error.message);
     }
@@ -54,11 +53,7 @@ const StepConfirmation = ({ call, setStep, accessToken }) => {
           Voltar
         </a>
 
-        <button
-          onClick={handleConfirmation}
-        >
-          Confirmar
-        </button>
+        <button onClick={handleConfirmation}>Confirmar</button>
       </div>
     </div>
   );
@@ -66,7 +61,7 @@ const StepConfirmation = ({ call, setStep, accessToken }) => {
 
 const mapStateToProps = (state) => ({
   call: state.call.newCall,
-  accessToken: state.user.accessToken
+  accessToken: state.user.accessToken,
 });
 
 export default connect(mapStateToProps)(StepConfirmation);
