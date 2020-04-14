@@ -4,9 +4,8 @@ const api = Axios.create({
   baseURL: "http://localhost:5000/",
 });
 
-export const get = async (url) => {
-  const response = await api.get(url);
-
+export const get = async (url, headers = null) => {
+  const response = await api.get(url, { headers: headers });
   if (response.status == 401) {
     window.location.href = "/login?redirect=" + window.location.pathname;
     return false;

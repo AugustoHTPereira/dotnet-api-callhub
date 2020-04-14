@@ -4,22 +4,28 @@ import Sidebar from "../../../components/Sidebar";
 import Loading from "../../../components/Loading";
 import "./style.css";
 import { toast } from "react-toastify";
+import * as Api from "../../../services/Api";
+import { connect } from "react-redux";
 
-export default class DetailsCall extends Component {
+class DetailsCall extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      callId: null,
+      call: null,
       isLoading: true,
     };
   }
 
-  componentWillMount() {
-    if (this.props.match.params) {
-      this.setState({
+  async getCall(id) {
+    try {
+      const response = await Api.get(`calls/${id}`, {
+        Authorization: `Bearer ${this.props.accessToken}`,
+      });
+
+      await this.setState({
         ...this.state,
-        callId: this.props.match.params.id,
+        call: response.data,
         isLoading: false,
       });
 
@@ -27,9 +33,17 @@ export default class DetailsCall extends Component {
         `Este chamado está aguardando uma resposta sua. Clique aqui para ir direto para a caixa de resposta.`,
         {
           autoClose: 8500,
-          position: toast.POSITION.TOP_RIGHT
+          position: toast.POSITION.TOP_RIGHT,
         }
       );
+    } catch (error) {
+      toast.error("Falha! " + error.message);
+    }
+  }
+
+  componentWillMount() {
+    if (this.props.match.params) {
+      this.getCall(this.props.match.params.id);
     }
   }
 
@@ -39,155 +53,134 @@ export default class DetailsCall extends Component {
         <Header />
         <div className="Container">
           <Sidebar />
-          <div className="Content">
-            <h3 className="PageTitle">
-              Detalhes do chamado
-              <span className="Identity">#{this.state.callId}</span>
-            </h3>
+          {this.state.call && (
+            <div className="Content">
+              <h3 className="PageTitle">
+                Detalhes do chamado
+                <span className="Identity">#{this.state.call.id}</span>
+              </h3>
 
-            <div className="Details">
-              <p>Prioridade: Média</p>
+              <div className="Details">
+                {this.state.call.priority && (
+                  <p>Prioridade: {this.state.call.priority}</p>
+                )}
 
-              <p>Categoria: Suporte</p>
+                {this.state.call.category && <p>Categoria: Suporte</p>}
 
-              <p>Criador: Augusto Henrique Tomba Pereira</p>
+                <p>Criador: Augusto Henrique Tomba Pereira</p>
 
-              <p>Data: 04/04/2020 14:33:55 - 06/04/2020 14:33:55</p>
+                <p>Data: {this.state.call.createdAt}</p>
 
-              <div className="Situation Warning">
-                <span className="Text">Concluído</span>
+                <div className="Situation Warning">
+                  <span className="Text">Concluído</span>
+                </div>
               </div>
-            </div>
 
-            <h1 className="CallTitle">
-              Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
-              consectetur, adipisci velit
-            </h1>
+              <h1 className="CallTitle">{this.state.call.title}</h1>
 
-            <p className="CallDescription">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-              justo neque, congue vel efficitur id, finibus ut ex. Fusce erat
-              eros, mollis ut consectetur non, efficitur in orci. Maecenas sed
-              posuere elit. Integer sed rhoncus mi, et dapibus sem. Donec ac
-              ornare dui, ut auctor nunc. Duis id ligula id nunc accumsan
-              tristique quis vel ex. Ut quis erat laoreet, rutrum justo vitae,
-              aliquet odio. Sed scelerisque mi nisi, nec maximus metus aliquam
-              ut. Proin auctor enim risus, sed posuere massa gravida nec.
-              Vestibulum porta hendrerit quam, ac vehicula sapien sodales nec.
-              Donec a mattis mi, sit amet ornare lectus. Ut libero erat,
-              lobortis a enim vel, semper molestie orci. Sed eu elit et purus
-              varius ultrices in ut ante. Donec malesuada nunc est, a euismod
-              sem sagittis ac.
-            </p>
+              <p className="CallDescription">{this.state.call.description}</p>
 
-            <ul className="Attachs">
-              <li className="Attach">
-                <img
-                  src="https://d13es1p1rl0iq1.cloudfront.net/wp-content/uploads/2019/09/plenonews_69429078_424547198412357_2917137491588994799_n-1024x684.jpg"
-                  alt=""
-                />
-
-                <div className="Attach-Details">
-                  <p>profile.png</p>
-                  <span>277 kb</span>
-                </div>
-              </li>
-
-              <li className="Attach">
-                <div className="Attach-PDF">.pdf</div>
-
-                <div className="Attach-Details">
-                  <p>profile.png</p>
-                  <span>277 kb</span>
-                </div>
-              </li>
-
-              <li className="Attach">
-                <div className="Attach-XLS">.xls</div>
-
-                <div className="Attach-Details">
-                  <p>profile.png</p>
-                  <span>277 kb</span>
-                </div>
-              </li>
-
-              <li className="Attach">
-                <div className="Attach-Default">.rar</div>
-
-                <div className="Attach-Details">
-                  <p>profile.png</p>
-                  <span>277 kb</span>
-                </div>
-              </li>
-            </ul>
-
-            <span className="Separator"></span>
-
-            <div className="Response">
-              <textarea placeholder="Resposta" cols="30" rows="7"></textarea>
-              <div className="Actions">
-                <a href="#">Limpar</a>
-                <button>Enviar</button>
-              </div>
-            </div>
-
-            <div>
-              <ul className="TimeLine">
-                <li className="HistoricItem">
-                  <i className="TextGray">_ Augusto Henrique Tomba Pereira</i>
-                  <p>
-                    Donec a mattis mi, sit amet ornare lectus. Ut libero erat,
-                    lobortis a enim vel, semper molestie orci. Sed eu elit et
-                    purus varius ultrices in ut ante. Donec malesuada nunc est,
-                    a euismod sem sagittis ac.
-                  </p>
-                  <i className="TextGray Right">04/04/2020</i>
-                </li>
-                <li className="HistoricItem">
-                  <i className="TextGray">_ Augusto Henrique Tomba Pereira</i>
-                  <p>
-                    Donec a mattis mi, sit amet ornare lectus. Ut libero erat,
-                    lobortis a enim vel, semper molestie orci. Sed eu elit et
-                    purus varius ultrices in ut ante. Donec malesuada nunc est,
-                    a euismod sem sagittis ac.
-                  </p>
-                  <i className="TextGray Right">04/04/2020</i>
-                </li>
-                <li className="HistoricItem">
-                  <i className="TextGray">_ Augusto Henrique Tomba Pereira</i>
-                  <p>
-                    Donec a mattis mi, sit amet ornare lectus. Ut libero erat,
-                    lobortis a enim vel, semper molestie orci. Sed eu elit et
-                    purus varius ultrices in ut ante. Donec malesuada nunc est,
-                    a euismod sem sagittis ac.
-                  </p>
-                  <i className="TextGray Right">04/04/2020</i>
-
-                  <ul className="Attachs">
-                    <li>
+              {this.state.call.attachs && (
+                <ul className="Attachs">
+                  {this.state.call.attach.map((attach) => (
+                    <li className="Attach">
                       <img
                         src="https://d13es1p1rl0iq1.cloudfront.net/wp-content/uploads/2019/09/plenonews_69429078_424547198412357_2917137491588994799_n-1024x684.jpg"
                         alt=""
                       />
 
                       <div className="Attach-Details">
-                        <p>profile-picture-sdljflkflajs.png</p>
-                        <span>277 kb</span>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="Attach-XLS">.xls</div>
-
-                      <div className="Attach-Details">
                         <p>profile.png</p>
                         <span>277 kb</span>
                       </div>
                     </li>
-                  </ul>
-                </li>
-              </ul>
+                  ))}
+
+                  {/* <li className="Attach">
+                    <div className="Attach-PDF">.pdf</div>
+
+                    <div className="Attach-Details">
+                      <p>profile.png</p>
+                      <span>277 kb</span>
+                    </div>
+                  </li>
+
+                  <li className="Attach">
+                    <div className="Attach-XLS">.xls</div>
+
+                    <div className="Attach-Details">
+                      <p>profile.png</p>
+                      <span>277 kb</span>
+                    </div>
+                  </li>
+
+                  <li className="Attach">
+                    <div className="Attach-Default">.rar</div>
+
+                    <div className="Attach-Details">
+                      <p>profile.png</p>
+                      <span>277 kb</span>
+                    </div>
+                  </li>*/}
+                </ul>
+              )}
+
+              <span className="Separator"></span>
+
+              <div className="Response">
+                <textarea placeholder="Resposta" cols="30" rows="7"></textarea>
+                <div className="Actions">
+                  <a href="#">Limpar</a>
+                  <button>Enviar</button>
+                </div>
+              </div>
+
+              <div>
+                <ul className="TimeLine">
+                  {this.state.call.timeline.map((item) => (
+                    <li className="HistoricItem">
+                      <i className="TextGray">
+                        _ Augusto Henrique Tomba Pereira
+                      </i>
+                      <p>
+                        Donec a mattis mi, sit amet ornare lectus. Ut libero
+                        erat, lobortis a enim vel, semper molestie orci. Sed eu
+                        elit et purus varius ultrices in ut ante. Donec
+                        malesuada nunc est, a euismod sem sagittis ac.
+                      </p>
+                      <i className="TextGray Right">04/04/2020</i>
+
+                      {item.attachs && (
+                        <ul className="Attachs">
+                          {item.attachs.map((attach) => (
+                            <li>
+                              <img
+                                src="https://d13es1p1rl0iq1.cloudfront.net/wp-content/uploads/2019/09/plenonews_69429078_424547198412357_2917137491588994799_n-1024x684.jpg"
+                                alt=""
+                              />
+
+                              <div className="Attach-Details">
+                                <p>profile-picture-sdljflkflajs.png</p>
+                                <span>277 kb</span>
+                              </div>
+                            </li>
+                          ))}
+                          {/* <li>
+                            <div className="Attach-XLS">.xls</div>
+
+                            <div className="Attach-Details">
+                              <p>profile.png</p>
+                              <span>277 kb</span>
+                            </div>
+                          </li> */}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
+          )}
 
           {this.state.isLoading && (
             <div
@@ -208,3 +201,9 @@ export default class DetailsCall extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  accessToken: state.user.accessToken,
+});
+
+export default connect(mapStateToProps)(DetailsCall);
