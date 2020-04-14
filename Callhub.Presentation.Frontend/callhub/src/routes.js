@@ -10,6 +10,7 @@ import { NotFound } from "./pages/Http";
 import Calls from "./pages/Calls";
 import NewCall from "./pages/Calls/New";
 import DetailsCall from "./pages/Calls/Details";
+import Landing from "./pages/Landing";
 
 const Routes = ({ token }) => {
   const isAuthenticated = () => {
@@ -37,7 +38,7 @@ const Routes = ({ token }) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={() => <h1>Callhub</h1>} />
+        <Route exact path="/" component={Landing} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/home" component={Home} />
