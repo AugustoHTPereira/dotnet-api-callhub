@@ -64,6 +64,20 @@ input[type="button"] {
   font-size: 16px;
   text-transform: uppercase;
   color: #434343;
+  font-family: "Baloo Thambi 2", cursive !important;
+}
+
+.Link {
+  background-color: transparent;
+  border: none;
+  color: #2274a5;
+  text-decoration: none;
+  font-family: "Baloo Thambi 2", cursive !important;
+  font-size: 16px;
+  text-transform: unset;
+  min-height: unset;
+  padding: unset;
+  cursor: pointer;
 }
 
 input.invalid {
@@ -116,6 +130,7 @@ input[type="button"]:disabled {
   cursor: no-drop !important;
   filter: brightness(150%) !important;
   box-shadow: none !important;
+  border-radius: 4px !important;
 }
 
 a:disabled {

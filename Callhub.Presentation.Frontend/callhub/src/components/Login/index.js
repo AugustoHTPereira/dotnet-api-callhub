@@ -16,6 +16,7 @@ class Login extends Component {
       password: "",
       email: "",
       stayLogged: false,
+      isLoading: false,
     };
   }
 
@@ -71,7 +72,11 @@ class Login extends Component {
             placeholder="Digite sua senha"
           />
 
-          <input type="submit" value="Entrar" />
+          <input
+            type="submit"
+            disabled={this.state.isLoading}
+            value={!this.state.isLoading ? "ENTRAR" : ""}
+          />
         </form>
 
         <div className="CardFooter">
