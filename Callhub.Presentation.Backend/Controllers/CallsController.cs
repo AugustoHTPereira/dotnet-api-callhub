@@ -46,7 +46,9 @@ namespace Callhub.Presentation.Backend.Controllers
     [Authorize]
     public async Task<IActionResult> Details(string CallId)
     {
-      return Ok(await this._callService.SelectAsync(Guid.Parse(CallId)));
+      if (!Guid.TryParse(CallId, out Guid Id)) return BadRequest();
+      
+      return Ok(await this._callService.SelectAsync(Id));
     }
   }
 }

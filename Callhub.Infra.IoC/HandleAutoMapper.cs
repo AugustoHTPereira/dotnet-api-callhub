@@ -28,6 +28,9 @@ namespace Callhub.Infra.IoC
 
       CreateMap<CallTimelineViewModel, CallTimeline>();
       CreateMap<CallTimeline, CallTimelineViewModel>();
+
+      CreateMap<RoleViewModel, Role>();
+      CreateMap<Role, RoleViewModel>();
     }
   }
 }

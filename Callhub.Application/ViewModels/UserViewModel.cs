@@ -4,14 +4,16 @@ using System.Text;
 
 namespace Callhub.Application.ViewModels
 {
-    public class UserViewModel
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string Email { get; set; }
-        public DateTime CreatedAt { get; set; }
+  public class UserViewModel
+  {
+    public Guid Id { get; set; }
+    public string Name { get; set; }
+    public string Surname { get; set; }
+    public string Email { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public Guid RoleId { get; set; }
 
-        public virtual DepartmentViewModel Department { get; set; }
-    }
+    public virtual DepartmentViewModel Department { get; set; }
+    public virtual RoleViewModel Role { get; set; }
+  }
 }

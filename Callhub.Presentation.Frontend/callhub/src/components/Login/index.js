@@ -34,8 +34,9 @@ class Login extends Component {
       const data = {
         accessToken: response.data.accessToken,
         expiressAt: response.data.expiressAt,
-        ...response.data.user, 
+        ...response.data.user,
         stayLogged: this.state.stayLogged,
+        role: response.data.user.role.name || "INTERN",
       };
 
       console.log(data);

@@ -9,7 +9,7 @@ const INITIAL_STATE = {
   createdAt: null,
   company: null,
   stayLogged: false,
-  role: "ADMIN",
+  role: "INTERN",
 };
 
 export default function user(state = INITIAL_STATE, action) {
