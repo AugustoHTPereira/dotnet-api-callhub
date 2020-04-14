@@ -11,19 +11,19 @@ namespace Callhub.Presentation.Backend.Controllers
 {
   [ApiController]
   [Route("[controller]")]
-  public class CallsController : ControllerBase
+  public class CallTimelineController : ControllerBase
   {
-    public CallsController(ICallService callService)
+    public CallTimelineController(ICallTimelineService callTimelineService)
     {
-      this._callService = callService;
+      this._callTimelineService = callTimelineService;
     }
 
-    private readonly ICallService _callService;
+    private readonly ICallTimelineService _callTimelineService;
 
 
     [HttpPost("")]
     [Authorize]
-    public async Task<IActionResult> Store([FromBody]CallViewModel call)
+    public async Task<IActionResult> Store([FromBody]CallTimelineViewModel callTimeline)
     {
       if (!ModelState.IsValid)
         return BadRequest(ModelState);
@@ -31,8 +31,8 @@ namespace Callhub.Presentation.Backend.Controllers
       try
       {
         Guid UserId = Guid.Parse(this.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value);
-        call.UserId = UserId;
-        await this._callService.InsertAsync(call);
+        callTimeline.UserId = UserId;
+        await this._callTimelineService.InsertAsync(callTimeline);
       }
       catch (System.Exception ex)
       {
@@ -40,13 +40,6 @@ namespace Callhub.Presentation.Backend.Controllers
       }
 
       return Ok();
-    }
-
-    [HttpGet("{CallId}")]
-    [Authorize]
-    public async Task<IActionResult> Details(string CallId)
-    {
-      return Ok(await this._callService.SelectAsync(Guid.Parse(CallId)));
     }
   }
 }

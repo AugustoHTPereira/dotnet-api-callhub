@@ -25,6 +25,9 @@ namespace Callhub.Infra.IoC
 
       CreateMap<CallViewModel, Call>();
       CreateMap<Call, CallViewModel>();
+
+      CreateMap<CallTimelineViewModel, CallTimeline>();
+      CreateMap<CallTimeline, CallTimelineViewModel>();
     }
   }
 }

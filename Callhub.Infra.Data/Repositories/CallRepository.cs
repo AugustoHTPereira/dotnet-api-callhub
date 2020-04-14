@@ -30,9 +30,9 @@ namespace Callhub.Infra.Data.Repositories
                                             VALUES (@Title, @Description, @Priority, @SectorDestinId, @ServiceLevel, @UserId)", Model);
     }
 
-    public Task<Call> SelectAsync(Guid Id)
+    public async Task<Call> SelectAsync(Guid Id)
     {
-      throw new NotImplementedException();
+      return await this._connection.QueryFirstAsync<Call>(@"SELECT * FROM Calls WHERE Id = @Id", new { Id });
     }
 
     public Task<IEnumerable<Call>> SelectAsync()

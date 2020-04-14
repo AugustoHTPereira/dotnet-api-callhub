@@ -26,5 +26,7 @@ namespace Callhub.Application.ViewModels
     public Guid UserId { get; set; }
 
     public DateTime CreatedAt { get; set; }
+
+    public virtual IEnumerable<CallTimelineViewModel> Timeline { get; set; }
   }
 }
