@@ -16,6 +16,7 @@ namespace Callhub.Domain.Models
     public Guid UserId { get; set; }
     public Guid SectorDestinId { get; set; }
     public Guid CategoryId { get; set; }
+    public string Situation { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     public virtual Category Category { get; set; }

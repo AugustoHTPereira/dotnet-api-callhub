@@ -21,7 +21,7 @@
 .ContentData .Options button {
   color: white;
   font-weight: 600;
-  background-color: royalblue;
+  background-color: #2274a5;
   cursor: pointer;
   transition: 200ms;
 }

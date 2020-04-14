@@ -27,6 +27,8 @@ namespace Callhub.Application.ViewModels
 
     public DateTime CreatedAt { get; set; }
 
+    public string Situation { get; set; }
+
     public virtual IEnumerable<CallTimelineViewModel> Timeline { get; set; }
   }
 }

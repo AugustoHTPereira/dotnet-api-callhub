@@ -3,7 +3,7 @@ import "./style.css";
 
 const Loading = ({ text = "Carregando..." }) => (
   <div className="LoadingContent">
-    <div class="lds-roller">
+    <div className="lds-roller">
       <div></div>
       <div></div>
       <div></div>

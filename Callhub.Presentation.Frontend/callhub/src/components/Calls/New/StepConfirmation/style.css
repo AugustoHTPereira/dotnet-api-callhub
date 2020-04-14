@@ -23,15 +23,15 @@
   align-items: center;
 }
 
-.ContentConfirmation .Options button {
+.ContentConfirmation .Options .Btn {
   color: white;
   font-weight: 600;
-  background-color: royalblue;
+  background-color: #2274a5;
   cursor: pointer;
   transition: 200ms;
 }
 
-.ContentConfirmation .Options button:hover {
+.ContentConfirmation .Options .Btn:hover {
   filter: brightness(115%);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }

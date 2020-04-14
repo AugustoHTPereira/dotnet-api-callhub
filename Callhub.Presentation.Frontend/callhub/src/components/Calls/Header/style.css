@@ -20,7 +20,7 @@ header.HeaderCall li {
 }
 
 header.HeaderCall li.Actived {
-  border-bottom: 2px solid royalblue;
+  border-bottom: 2px solid #2274a5;
   cursor: default;
   animation: animateActived 200ms ease-out;
   font-weight: 600;

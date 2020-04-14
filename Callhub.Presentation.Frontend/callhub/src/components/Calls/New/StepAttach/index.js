@@ -39,7 +39,7 @@ class StepAttach extends React.Component {
             Voltar
           </button>
 
-          <button onClick={() => this.props.setStep("CONFIRMATION")}>próximo</button>
+          <button className="Btn" onClick={() => this.props.setStep("CONFIRMATION")}>próximo</button>
         </div>
       </div>
     );

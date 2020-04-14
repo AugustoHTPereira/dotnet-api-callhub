@@ -72,7 +72,7 @@ const StepConfirmation = ({ call, setStep, accessToken }) => {
           Voltar
         </button>
 
-        <button disabled={isLoading} onClick={handleConfirmation}>
+        <button className="Btn" disabled={isLoading} onClick={handleConfirmation}>
           Confirmar
         </button>
       </div>
