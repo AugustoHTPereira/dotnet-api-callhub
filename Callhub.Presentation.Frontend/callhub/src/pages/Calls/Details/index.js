@@ -130,7 +130,7 @@ class DetailsCall extends Component {
               <div className="Response">
                 <textarea placeholder="Resposta" cols="30" rows="7"></textarea>
                 <div className="Actions">
-                  <a href="#">Limpar</a>
+                  <button className="Link">Limpar</button>
                   <button>Enviar</button>
                 </div>
               </div>

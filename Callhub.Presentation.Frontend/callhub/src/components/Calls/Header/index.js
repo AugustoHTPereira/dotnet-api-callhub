@@ -8,7 +8,6 @@ const Header = ({ switchMenu, options = [{}] }) => {
   const [selectedMenuIndex, selectMenuIndex] = useState(0);
 
   const chooseMenu = (index) => {
-    console.log("choose", index);
     selectMenuIndex(index);
     switchMenu(menus[index].value);
   };
@@ -17,11 +16,11 @@ const Header = ({ switchMenu, options = [{}] }) => {
     menus.map((menu, index) => (
       <li
         key={index}
-        className={menu == menus[selectedMenuIndex] ? "Actived" : "NoActived"}
-        disabled={menu == menus[selectedMenuIndex]}
+        className={menu === menus[selectedMenuIndex] ? "Actived" : "NoActived"}
+        disabled={menu === menus[selectedMenuIndex]}
         onClick={(e) => {
           e.preventDefault();
-          if (menu == menus[selectedMenuIndex]) return;
+          if (menu === menus[selectedMenuIndex]) return;
           chooseMenu(index);
         }}
       >

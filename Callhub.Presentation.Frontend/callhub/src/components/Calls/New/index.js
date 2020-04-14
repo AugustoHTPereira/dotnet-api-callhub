@@ -3,7 +3,6 @@ import Attach from "./StepAttach";
 import Confirmation from "./StepConfirmation";
 import Data from "./StepData";
 import Priority from "./StepPriority";
-import { ToastContainer, toast } from "react-toastify";
 
 const New = () => {
   const [step, setStep] = useState("DATA");

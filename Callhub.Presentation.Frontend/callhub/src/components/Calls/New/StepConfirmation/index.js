@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Api from "../../../../services/Api";
 import FileList from "../../../Upload/FileList";
 import "./style.css";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import Loading from "../../../Loading";
@@ -25,7 +25,7 @@ const StepConfirmation = ({ call, setStep, accessToken }) => {
 
     try {
       setLoadingText("Enviando dados...");
-      const response = await Api.post("/calls", data, {
+      await Api.post("/calls", data, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -68,9 +68,9 @@ const StepConfirmation = ({ call, setStep, accessToken }) => {
       </div>
 
       <div className="Options">
-        <a href="#" onClick={() => setStep("ATTACH")}>
+        <button className="Link" onClick={() => setStep("ATTACH")}>
           Voltar
-        </a>
+        </button>
 
         <button disabled={isLoading} onClick={handleConfirmation}>
           Confirmar

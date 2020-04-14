@@ -17,10 +17,7 @@ class ChooseCompany extends Component {
   async componentDidMount() {
     try {
       const response = await api.get("/companies");
-      console.log(response.data);
       this.setState({ ...this.state, companies: response.data });
-      console.log(this.state);
-      console.log("props", this.props)
     } catch (error) {
       console.error("ERRO NA COMUNICAÇÃO COM O SERVIDOR", error);
     }
@@ -29,7 +26,6 @@ class ChooseCompany extends Component {
   async selectCompany(event, company) {
     event.preventDefault();
     await this.setState({ ...this.state, selectedCompany: company });
-    console.log("state", this.state);
 
     this.props.setUserCompany(company);
     this.props.next("DEPARTMENT");

@@ -9,7 +9,6 @@ export const setUserToken = (token) => ({
 });
 
 export const setUser = (user) => {
-  console.log("ACTION", user);
   return {
     type: "SET_USER",
     payload: user,

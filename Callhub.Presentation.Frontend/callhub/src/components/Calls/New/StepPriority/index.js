@@ -2,7 +2,6 @@ import React from "react";
 import "./style.css";
 
 import { connect } from "react-redux";
-import { bindActionCreators } from "react";
 import { setNewCallPriority } from "../../../../store/actions/Call";
 
 const StepPriority = ({ setStep, setPriority }) => {
@@ -38,9 +37,9 @@ const StepPriority = ({ setStep, setPriority }) => {
       </div>
 
       <div className="Options">
-        <a href="#" onClick={() => setStep("DATA")}>
+        <button className="Link" onClick={() => setStep("DATA")}>
           Voltar
-        </a>
+        </button>
       </div>
     </div>
   );

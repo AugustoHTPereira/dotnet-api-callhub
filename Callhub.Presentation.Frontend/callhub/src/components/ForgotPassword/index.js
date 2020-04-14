@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-
-import { Link } from "react-router-dom";
-
 import "./style.css";
 
 const ForgotPassword = ({ setStage, mail = "" }) => {
@@ -25,8 +22,8 @@ const ForgotPassword = ({ setStage, mail = "" }) => {
       </form>
 
       <div style={{ justifyContent: "center" }} className="CardFooter">
-        <a
-          href="javascript:void(0)"
+        <button
+          className="Link"
           onClick={(e) => {
             e.preventDefault();
             setStage("LOGIN");
@@ -34,7 +31,7 @@ const ForgotPassword = ({ setStage, mail = "" }) => {
           title="Voltar ao login"
         >
           Cancelar
-        </a>
+        </button>
       </div>
     </div>
   );

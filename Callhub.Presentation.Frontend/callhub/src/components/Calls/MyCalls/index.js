@@ -31,7 +31,6 @@ class MyCalls extends Component {
             <li
               key={index}
               onClick={() => {
-                console.log(call);
                 window.location.href = `calls/${call.id}`;
               }}
               className="Call"

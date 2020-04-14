@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 import { IoMdCloseCircleOutline } from "react-icons/io";
-import { MdError, MdCheck, MdLink } from "react-icons/md";
+import { MdError, MdCheck } from "react-icons/md";
 
 const FileList = ({ files }) => (
   <ul className="Files">
@@ -17,9 +17,9 @@ const FileList = ({ files }) => (
             </div>
 
             {file.uploaded && (
-              <a href="#" title="Remover" className="Remove">
+              <button onClick={() => {}} title="Remover" className="Remove">
                 <IoMdCloseCircleOutline size={22} />
-              </a>
+              </button>
             )}
 
             <span className="Status">

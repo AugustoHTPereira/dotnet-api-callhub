@@ -8,7 +8,6 @@ import "./style.css";
 import { Link } from "react-router-dom";
 
 const SwitchComponent = ({ userRole }) => {
-  console.log(userRole);
   switch (userRole) {
     case "INTERN":
       return <Intern />;

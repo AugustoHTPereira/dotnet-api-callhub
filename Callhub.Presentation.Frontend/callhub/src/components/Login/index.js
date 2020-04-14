@@ -1,11 +1,10 @@
-import React, { useState, Component } from "react";
+import React, { Component } from "react";
 
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as UserActions from "../../store/actions/User";
 import { bindActionCreators } from "redux";
 import { post } from "../../services/Api";
-import { useHistory } from "react-router-dom";
 
 import "./style.css";
 
@@ -39,13 +38,11 @@ class Login extends Component {
         role: response.data.user.role.name || "INTERN",
       };
 
-      console.log(data);
-
       this.props.setUser(data);
       window.location.href = "/app";
     } catch (error) {
       console.error(error);
-      if (error.response.status == 401) alert("Acesso negado");
+      if (error.response.status === 401) alert("Acesso negado");
     }
   };
 
@@ -78,8 +75,8 @@ class Login extends Component {
         </form>
 
         <div className="CardFooter">
-          <a
-            href="javascript:void(0)"
+          <button
+            className="Link"
             onClick={(e) => {
               e.preventDefault();
               this.props.setStage("FORGOTPASSWORD");
@@ -87,7 +84,7 @@ class Login extends Component {
             title="Recuperar acesso"
           >
             Esqueci minha senha
-          </a>
+          </button>
 
           <span className="Pipe"></span>
 

@@ -4,10 +4,6 @@ import { connect } from "react-redux";
 import "./style.css";
 
 class Sidebar extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="SidebarContent">

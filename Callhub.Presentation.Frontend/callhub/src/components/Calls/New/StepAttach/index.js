@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { setNewCallAttachs } from "../../../../store/actions/Call";
-import { FaPlus } from "react-icons/fa";
 import filesize from "filesize";
 
 import "./style.css";
@@ -9,9 +8,6 @@ import Upload from "../../../Upload";
 import FileList from "../../../Upload/FileList";
 
 class StepAttach extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   handleUpload = (files) => {
 
@@ -27,8 +23,6 @@ class StepAttach extends React.Component {
     }))
 
     this.props.setAttachs(uploadedFiles);
-    console.log("Files", files);
-    console.log("CALLS", this.props.call);
   };
 
   render() {
@@ -41,9 +35,9 @@ class StepAttach extends React.Component {
         <FileList files={this.props.attachs} />
 
         <div className="Options">
-          <a href="#" onClick={() => this.props.setStep("PRIORITY")}>
+          <button className="Link" onClick={() => this.props.setStep("PRIORITY")}>
             Voltar
-          </a>
+          </button>
 
           <button onClick={() => this.props.setStep("CONFIRMATION")}>próximo</button>
         </div>

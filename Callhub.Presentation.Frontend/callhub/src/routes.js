@@ -15,7 +15,6 @@ import Landing from "./pages/Landing";
 const Routes = ({ token }) => {
   const isAuthenticated = () => {
     try {
-      console.log("Token: ", token);
       if (token) return true;
 
       return false;

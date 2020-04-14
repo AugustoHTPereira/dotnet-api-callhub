@@ -19,7 +19,6 @@ class ChooseDepartment extends Component {
         `companies/${this.state.company.id}/departments`
       );
       this.setState({ ...this.state, departments: response.data });
-      console.log(this.state);
     } catch (error) {
       console.error("Error while gettin departments", error.message);
     }
@@ -33,12 +32,11 @@ class ChooseDepartment extends Component {
     )
       return;
 
-    const response = await api.post(`users/department/${departmentId}`, {}, {
+    await api.post(`users/department/${departmentId}`, {}, {
       headers: {
         Authorization: `Bearer ${this.props.accessToken}`
       }
     });
-    console.log(response);
   }
 
   render() {

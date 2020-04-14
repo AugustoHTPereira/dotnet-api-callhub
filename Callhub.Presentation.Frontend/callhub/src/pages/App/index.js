@@ -5,11 +5,6 @@ import Sidebar from "../../components/Sidebar";
 
 export class App extends Component {
 
-  constructor(props) {
-    super(props);
-
-  }
-
   render() {
     return (
       <div className="PageContent">

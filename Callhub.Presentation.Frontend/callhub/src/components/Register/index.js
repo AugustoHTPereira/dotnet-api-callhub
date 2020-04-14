@@ -24,8 +24,6 @@ class Register extends Component {
     try {
       const response = await api.post("accounts", this.state);
 
-      console.log(response.data);
-
       const {
         accessToken,
         refreshToken,
