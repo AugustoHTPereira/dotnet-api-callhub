@@ -403,6 +403,19 @@
   resize: none;
 }
 
+.DetailsCallContent > .Container > .Content > div.Response select {
+  height: 45px;
+  width: 100%;
+  border-radius: 4px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  background-color: transparent;
+  padding: 5px 15px;
+  font-size: 16px;
+  color: #434343;
+  font-family: "Baloo Thambi 2", cursive !important;
+}
+
 .DetailsCallContent > .Container > .Content > div.Response .Actions {
   display: flex;
   justify-content: flex-end;
@@ -410,7 +423,13 @@
   margin-top: 15px;
 }
 
-.DetailsCallContent > .Container > .Content > div.Response .Actions .Btn {
+.DetailsCallContent > .Container > .Content > div.Response .Actions .Btn,
+.DetailsCallContent
+  > .Container
+  > .Content
+  > div.Response
+  .Actions
+  .BtnConfirm {
   margin-left: 25px;
   color: white;
   background-color: #2274a5;
@@ -419,7 +438,24 @@
   transition: 200ms;
 }
 
-.DetailsCallContent > .Container > .Content > div.Response .Actions .Btn:hover {
+.DetailsCallContent > .Container > .Content > div.Response .Actions .Btn:hover,
+.DetailsCallContent
+  > .Container
+  > .Content
+  > div.Response
+  .Actions
+  .BtnConfirm:hover {
   filter: brightness(105%);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.DetailsCallContent > .Container > .Content > div.Response .Modal {
+  animation: fadeIn 100ms ease-in;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
 }
