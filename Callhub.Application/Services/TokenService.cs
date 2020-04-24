@@ -34,7 +34,8 @@ namespace Callhub.Application.Services
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name, Model.Email),
-                    new Claim(ClaimTypes.NameIdentifier, Model.Id.ToString())
+                    new Claim(ClaimTypes.NameIdentifier, Model.Id.ToString()),
+                    new Claim(ClaimTypes.Role, Model.Role != null ? Model.Role.Name : "INTERN"),
                 }),
                 Expires = tokenViewModel.ExpiressAt,
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
