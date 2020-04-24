@@ -17,5 +17,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
+    - name: Restore project
+      run: dotnet restore
     - name: Build API
       run: dotnet build --configuration Release
