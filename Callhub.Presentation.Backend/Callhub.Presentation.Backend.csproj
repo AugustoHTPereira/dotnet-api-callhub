@@ -21,4 +21,6 @@
     <ProjectReference Include="..\Callhub.Infra.IoC\Callhub.Infra.IoC.csproj" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
 </Project>
