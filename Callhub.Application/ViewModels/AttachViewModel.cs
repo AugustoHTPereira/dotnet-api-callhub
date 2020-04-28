@@ -1,14 +1,16 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Callhub.Domain.Models
+namespace Callhub.Application.ViewModels
 {
-    public class Attach
+    public class AttachViewModel
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public int Size { get; set; }
+        public long Size { get; set; }
         public string FullPath { get; set; }
-        public int RelativePath { get; set; }
+        public string RelativePath { get; set; }
         public string TableName { get; set; }
         public Guid TableRegisterId { get; set; }
         public DateTime CreatedAt { get; set; }
