@@ -48,10 +48,17 @@ namespace Callhub.Presentation.Backend.Controllers
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            UserViewModel userViewModel = await this._userService.SelectByCredentialsAsync(loginViewModel.Email, loginViewModel.Password);
-            if (userViewModel == null) return Unauthorized();
+            try
+            {
+                UserViewModel userViewModel = await this._userService.SelectByCredentialsAsync(loginViewModel.Email, loginViewModel.Password);
+                if (userViewModel == null) return Unauthorized();
 
-            return Ok(this._tokenService.Generate(userViewModel));
+                return Ok(this._tokenService.Generate(userViewModel));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
         }
 
         [HttpGet]

@@ -28,7 +28,7 @@ namespace Callhub.Infra.Data.Repositories
 
         public async Task InsertAsync(User Model)
         {
-            await this._connection.QueryAsync<User>($"INSERT INTO Users (Name, Surname, Email, PasswordHash) VALUES (@Name, @Surname, @Email, @Password)", Model);
+            await this._connection.QueryAsync<User>($"INSERT INTO Users (Name, Surname, Email, Password) VALUES (@Name, @Surname, @Email, @Password)", Model);
         }
 
         public Task<User> SelectAsync(int Id)
@@ -58,7 +58,7 @@ namespace Callhub.Infra.Data.Repositories
 
         public async Task<User> SelectByCredentialsAsync(string Email, string PasswordHash)
         {
-            return await this._connection.QueryFirstOrDefaultAsync<User>(@"SELECT * FROM Users WHERE Email = @Email AND PasswordHash = @PasswordHash", new { Email, PasswordHash });
+            return await this._connection.QueryFirstOrDefaultAsync<User>(@"SELECT * FROM Users WHERE Email = @Email AND Password = @PasswordHash", new { Email, PasswordHash });
         }
     }
 }

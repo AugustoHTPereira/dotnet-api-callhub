@@ -73,8 +73,10 @@ namespace Callhub.Application.Services
         public async Task<UserViewModel> SelectByCredentialsAsync(string Email, string Password)
         {
             UserViewModel user = this._mapper.Map<UserViewModel>(await this._userRepository.SelectByCredentialsAsync(Email, this._hashService.Encode(Password)));
-            if (user.RoleId != Guid.Empty)
-                user.Role = this._mapper.Map<RoleViewModel>(await this._roleRepository.SelectAsync(user.RoleId));
+            if (user != null)
+                if (user.RoleId != Guid.Empty)
+                    user.Role = this._mapper.Map<RoleViewModel>(await this._roleRepository.SelectAsync(user.RoleId));
+                else user.Role = new RoleViewModel { Name = "INTERN" };
 
             return user;
         }

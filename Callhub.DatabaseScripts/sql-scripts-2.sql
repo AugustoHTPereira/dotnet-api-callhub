@@ -56,7 +56,7 @@ create table Users (
   Surname varchar(150) null,
   Email varchar(255) not null unique,
   Priority int not null default 1,
-  PasswordHash text not null,
+  Password nvarchar not null,
   DepartmentId uniqueidentifier null foreign key references Departments(Id),
   RoleId uniqueidentifier null foreign key references Roles(Id),
   CreatedAt datetime not null default getdate()
