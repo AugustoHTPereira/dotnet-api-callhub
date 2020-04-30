@@ -65,10 +65,7 @@ namespace Callhub.Presentation.Backend.Controllers
             {
                 Guid UserId = Guid.Parse(this.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value);
 
-                UserViewModel userViewModel = await this._userService.SelectAsync(Guid.Parse(this.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value));
-
-
-
+                UserViewModel userViewModel = await this._userService.SelectAsync(UserId);
 
                 return Ok(new
                 {
@@ -80,6 +77,25 @@ namespace Callhub.Presentation.Backend.Controllers
                         role = this.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role).Value,
                     }
                 });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpGet("{id}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetUserData(string id)
+        {
+            try
+            {
+                Guid UserId = Guid.Parse(id);
+
+                UserViewModel userViewModel = await this._userService.SelectAsync(UserId);
+
+                if (userViewModel != null) return Ok(userViewModel);
+                else return NotFound();
             }
             catch (Exception ex)
             {

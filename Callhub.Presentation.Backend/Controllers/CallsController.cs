@@ -30,8 +30,7 @@ namespace Callhub.Presentation.Backend.Controllers
 
             try
             {
-                Guid UserId = Guid.Parse(this.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value);
-                call.UserId = UserId;
+                call.UserId = Guid.Parse(this.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value);
                 await this._callService.InsertAsync(call);
             }
             catch (System.Exception ex)

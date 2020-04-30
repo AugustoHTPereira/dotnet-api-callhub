@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,7 +29,7 @@ namespace Callhub.Infra.Data.Repositories
 
         public async Task InsertAsync(User Model)
         {
-            await this._connection.QueryAsync<User>($"INSERT INTO Users (Name, Surname, Email, Password) VALUES (@Name, @Surname, @Email, @Password)", Model);
+            await this._connection.QueryAsync<User>(@"INSERT INTO Users (Name, Surname, Email, Password) VALUES (@Name, @Surname, @Email, @Password)", Model);
         }
 
         public Task<User> SelectAsync(int Id)
@@ -43,7 +44,38 @@ namespace Callhub.Infra.Data.Repositories
 
         public async Task<User> SelectAsync(Guid Id)
         {
-            return await this._connection.QueryFirstOrDefaultAsync<User>(@"SELECT * FROM Users WHERE Id = @Id", new { Id });
+            var results = await this._connection
+                .QueryAsync<User,
+                            Department,
+                            Role,
+                            Company,
+                            User>(@"SELECT TOP 1
+                                        U.Id, 
+                                        U.Name, 
+                                        U.Surname, 
+                                        U.Email,
+                                        D.Id,
+                                        D.Name, 
+                                        R.Id,
+                                        R.Name,
+                                        C.Id,
+                                        C.Name
+                                    FROM Users U
+                                    LEFT JOIN Departments D on D.Id = U.DepartmentId
+                                    LEFT JOIN Roles R on R.Id = U.RoleId
+                                    LEFT JOIN Companies C on C.Id = D.CompanyId
+                                    WHERE U.Id = @Id",
+                                    map: (user, department, role, company) =>
+                                    {
+                                        user.Role = role;
+                                        user.Department = department;
+                                        user.Department.Company = company;
+                                        return user;
+                                    },
+                                    param: new { Id }
+                                );
+
+            return results.AsList().FirstOrDefault();
         }
 
         public async Task<User> SelectIdentityAsync()
@@ -53,12 +85,36 @@ namespace Callhub.Infra.Data.Repositories
 
         public async Task UpdateAsync(User Model)
         {
-            await this._connection.ExecuteAsync($"UPDATE Users SET Name = @Name, Surname = @Surname, DepartmentId = @DepartmentId WHERE Id = @Id", Model);
+            await this._connection.ExecuteAsync(@"UPDATE Users SET Name = @Name, Surname = @Surname, DepartmentId = @DepartmentId WHERE Id = @Id", Model);
         }
 
         public async Task<User> SelectByCredentialsAsync(string Email, string PasswordHash)
         {
-            return await this._connection.QueryFirstOrDefaultAsync<User>(@"SELECT * FROM Users WHERE Email = @Email AND Password = @PasswordHash", new { Email, PasswordHash });
+            var results = await this._connection
+                .QueryAsync<User,
+                            Role,
+                            User>(@"SELECT 
+                                      U.Id,
+                                      U.Name,
+                                      U.Surname,
+                                      U.Email,
+                                      U.Priority,
+                                      u.DepartmentId,
+                                      U.RoleId,
+                                      U.CreatedAt,
+                                      R.Id, 
+                                      R.Name
+                                    FROM Users U
+                                    LEFT JOIN Roles R on R.id = U.RoleId 
+                                    WHERE U.Email = @Email AND U.Password = @PasswordHash",
+                                    map: (user, role) =>
+                                    {
+                                        user.Role = role;
+                                        return user;
+                                    }, new { Email, PasswordHash }
+                                );
+
+            return results.AsList().FirstOrDefault();
         }
     }
 }

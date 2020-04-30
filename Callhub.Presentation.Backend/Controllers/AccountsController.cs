@@ -46,7 +46,7 @@ namespace Callhub.Presentation.Backend.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody]LoginViewModel loginViewModel)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (!ModelState.IsValid) return UnprocessableEntity(ModelState);
 
             try
             {
